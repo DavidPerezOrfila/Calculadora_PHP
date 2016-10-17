@@ -1,0 +1,9 @@
+<?php require 'application/layouts/header.phtml'; ?>
+
+<form method="post" action="/index.php?controller=string&action=<?php echo $action; ?>">
+    <input type="string" name="cad1"><br>
+    <input type="string" name="cad2"><br>
+    <input type="string" value="ok">
+</form>
+
+<?php require 'application/layouts/footer.phtml'; ?>
