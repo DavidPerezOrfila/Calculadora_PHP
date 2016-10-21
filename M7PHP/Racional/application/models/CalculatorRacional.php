@@ -14,6 +14,11 @@ class CalculatorRacional
     private $op1;
     private $op2;
 
+    /**
+     * CalculatorRacional constructor.
+     * @param Racional|null $r1
+     * @param Racional|null $r2
+     */
     public function __construct(Racional $r1 = null, Racional $r2 = null)
     {
         $this->setOp1($r1);
@@ -44,10 +49,19 @@ class CalculatorRacional
     {
         $this->op1 = $r1;
     }
+
+    /**
+     * @param Racional $r2
+     */
     public function setOp2(Racional $r2)
     {
         $this->op2 = $r2;
     }
+
+    /**
+     * @param Racional $r
+     * @return Racional
+     */
     public function multiply(Racional $r){
 
         $resultado= new Racional();
@@ -57,6 +71,10 @@ class CalculatorRacional
         return $resultado;
     }
 
+    /**
+     * @param Racional $r
+     * @return Racional
+     */
     public function division(Racional $r){
         $resultado= new Racional();
         $resultado= $this->setNumerador($this->getNumerador() * $r->getDenominador());

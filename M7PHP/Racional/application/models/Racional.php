@@ -14,6 +14,11 @@ class Racional
     private $numerador;
     private $denominador;
 
+    /**
+     * Racional constructor.
+     * @param null $numerador
+     * @param null $denominador
+     */
     public function __construct($numerador=null, $denominador=null)
     {
         $this->setNumerador($numerador);
