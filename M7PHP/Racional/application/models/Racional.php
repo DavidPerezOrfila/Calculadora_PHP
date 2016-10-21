@@ -55,21 +55,5 @@ class Racional
         $this->denominador = $denominador;
     }
 
-    public function multiply(Racional $r){
 
-        $resultado= new Racional();
-        $resultado= $this->setNumerador(getNumerador() * $r->getNumerador());
-        $resultado= $this->setDenominador(getDenominador() * $r->getDenominador());
-
-        return $resultado;
-    }
-
-    public function division(Racional $r){
-        $resultado= new Racional();
-        $resultado= $this->setNumerador($this->getNumerador() * $r->getDenominador());
-        $resultado= $this->setDenominador($this->getDenominador() * $r->getNumerador());
-
-        return $resultado;
-
-    }
 }

@@ -7,14 +7,14 @@
  */
 
 namespace controllers;
-use models\CalculatorModel;
+//use models\CalculatorModel;
 use models\CalculatorRacional;
 
 require 'application/models/CalculatorModel.php';
 require 'application/models/CalculatorRacional.php';
 class CalculatorController
 {
-    public function sumAction()
+    /*public function sumAction()
     {
         $action = 'doSum';
         return require 'application/views/form.phtml';
@@ -66,5 +66,23 @@ class CalculatorController
         $model->division();
         $result = $model->getResult();
         return require  'application/views/result.phtml';
+    }*/
+
+    public function multiplyAction()
+    {
+        $action = 'doMultiply';
+        return require 'application/views/form.phtml';
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function doMultiplyAction()
+    {
+        $model = new CalculatorRacional($_POST['op1'], $_POST['op2']);
+        $model->multiply();
+        $result = $model->getResult();
+        return require 'application/views/result.phtml';
     }
 }
