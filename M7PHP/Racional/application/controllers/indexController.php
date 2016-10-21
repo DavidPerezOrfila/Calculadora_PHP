@@ -1,12 +1,18 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: david
- * Date: 14/10/16
- * Time: 17:36
+ * Date: 11/10/16
+ * Time: 21:11
  */
-class indexController
-{
 
+namespace controllers;
+
+
+class IndexController
+{
+    public function indexAction()
+    {
+        require 'application/views/index.phtml';
+    }
 }
