@@ -24,8 +24,22 @@ class DefaultController extends Controller
     /**
      * @Route("/name/{name}", name="app_default_index");
      **/
-    public function pruebaAction($name){
+    public function pruebaAction($name)
+    {
         return new Response('Hola'. $name);
 
     }
+
+
+    /**
+     * @Route("prueba1", name="app_default_pruebaVista")
+     */
+    public function pruebaVistaAction()
+    {
+        return $this->render(':default:vista1.html.twig', [
+            'titulo'    =>'Mi página',
+            'Resultado' => '3',
+        ]);
+    }
+
 }
