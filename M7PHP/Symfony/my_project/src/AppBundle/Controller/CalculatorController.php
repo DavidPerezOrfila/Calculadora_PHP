@@ -89,4 +89,18 @@ class CalculatorController extends Controller
     {
 
     }
+
+    public function restarAction()
+    {
+        return $this->render(':Calculator:form.html.twig',
+            [
+                'action' => 'app_calculator_doRestar'
+            ]
+        );
+    }
+
+    public function doRestarAction()
+    {
+
+    }
 }
