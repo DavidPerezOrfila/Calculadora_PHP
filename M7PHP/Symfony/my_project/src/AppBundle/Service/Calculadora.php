@@ -99,7 +99,7 @@ class Calculadora
     public function sum()
     {
 
-        $this->setResultado($this->getOp1() + $this->setOp2());
+        $this->setResultado($this->getOp1() + $this->getOp2());
 
         return $this->getResultado();
 
@@ -132,9 +132,11 @@ class Calculadora
     public function dividir()
     {
         if($this->getOp2() !== 0) {
-            $this->getResultado();
+            $this->setResultado($this->getOp1()/ $this->getOp2());
+            return $this->getResultado();
         }else{
-            return "No se puede dividir por 0!";
+
+            return $this->setResultado(intval("No se puede dividir por 0!"));
         }
     }
 

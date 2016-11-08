@@ -1,8 +1,10 @@
 {% extends '::base.html.twig' %}
 {% block body %}
-        <li><a href="{{ path('app_calculator_index') }}">Inicio</a> </li>
-        <li><a href="{{ path('app_calculator_sum') }}">Sumar</a> </li>
-        <li><a href="{{ path('app_calculator_multi') }}">Multiplicar</a> </li>
-        <li><a href="{{ path('app') }}">Restar</a> </li>
-        <li><a href="{{ path('app_calculator_div') }}">Dividir</a> </li>
+        <ul>
+                <li><a href="{{ path('app_calculator_index') }}">Inicio</a> </li>
+                <li><a href="{{ path('app_calculator_sum') }}">Sumar</a> </li>
+                <li><a href="{{ path('app_calculator_multi') }}">Multiplicar</a> </li>
+                <li><a href="{{ path('app_calculator_restar') }}">Restar</a> </li>
+                <li><a href="{{ path('app_calculator_div') }}">Dividir</a> </li>
+        </ul>
 {% endblock %}

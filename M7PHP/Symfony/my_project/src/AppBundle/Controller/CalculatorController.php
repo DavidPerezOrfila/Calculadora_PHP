@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Service\Calculadora;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class CalculatorController extends Controller
 {
@@ -34,19 +36,27 @@ class CalculatorController extends Controller
     }
 
     /**
-     *
+     * @Route("/doSum", name="app_calculator_doSum")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function doSumAction(Request $request)
     {
-        $op1= $request->get('op1');
-        $op2= $request->get('op2');
-        $calculator = $this->get('calculator');
+        $op1 = $request->request->get('op1');
+        $op2 = $request->request->get('op2');
+        $calculator = new Calculadora($op1, $op2);
+
         $calculator->setOp1($op1);
         $calculator->setOp2($op2);
         $calculator->sum();
+        $result = $calculator->getResultado();
 
 
-        return $this->render(':Calculator:result.html.twig');
+        return $this->render(':Calculator:result.html.twig',
+            [
+                'result'=>$result
+            ]
+            );
     }
 
     /**
@@ -65,10 +75,25 @@ class CalculatorController extends Controller
     }
 
     /**
-     *
+     * @Route("/doMulti", name="app_calculator_doMulti")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function doMultiAction()
+    public function doMultiAction(Request $request)
     {
+        $op1 = $request->request->get('op1');
+        $op2 = $request->request->get('op2');
+        $calculator = new Calculadora($op1, $op2);
+        $calculator->setOp1($op1);
+        $calculator->setOp2($op2);
+        $calculator->multi();
+        $result = $calculator->getResultado();
+
+        return $this->render(':Calculator:result.html.twig',
+            [
+                'result'=>$result
+            ]
+        );
+
 
     }
 
@@ -76,20 +101,40 @@ class CalculatorController extends Controller
      * @Route("/div", name="app_calculator_div")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function divideAction()
+    public function divAction()
     {
         return $this->render(':Calculator:form.html.twig',
         [
-            'action' => 'app_calculator_doDivide'
+            'action' => 'app_calculator_doDiv'
         ]
         );
     }
 
-    public function doDivideAction()
+    /**
+     * @Route("/doDiv", name="app_calculator_doDiv")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function doDivAction(Request $request)
     {
+        $op1 = $request->request->get('op1');
+        $op2 = $request->request->get('op2');
+        $calculator = new Calculadora($op1, $op2);
+        $calculator->setOp1($op1);
+        $calculator->setOp2($op2);
+        $calculator->dividir();
+        $result=$calculator->getResultado();
 
+        return $this->render(':Calculator:result.html.twig',
+        [
+            'result'=>$result
+        ]
+    );
     }
 
+    /**
+     * @Route("/restar", name="app_calculator_restar")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function restarAction()
     {
         return $this->render(':Calculator:form.html.twig',
@@ -99,8 +144,26 @@ class CalculatorController extends Controller
         );
     }
 
-    public function doRestarAction()
+    /**
+     * @Route("/doRestar", name="app_calculator_doRestar")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function doRestarAction(Request $request)
     {
+        $op1 = $request->request->get('op1');
+        $op2 = $request->request->get('op2');
+        $calculator = new Calculadora($op1, $op2);
 
+        $calculator->setOp1($op1);
+        $calculator->setOp2($op2);
+        $calculator->restar();
+        $result = $calculator->getResultado();
+
+
+        return $this->render(':Calculator:result.html.twig',
+            [
+                'result'=>$result
+            ]
+        );
     }
 }
